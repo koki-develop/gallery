@@ -4,5 +4,10 @@ terraform {
       source  = "koki-develop/js"
       version = "0.4.0"
     }
+
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.59.0"
+    }
   }
 }
