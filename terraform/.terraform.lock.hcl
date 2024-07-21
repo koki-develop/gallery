@@ -1,0 +1,25 @@
+# This file is maintained automatically by "terraform init".
+# Manual edits may be lost in future updates.
+
+provider "registry.terraform.io/koki-develop/js" {
+  version     = "0.4.0"
+  constraints = "0.4.0"
+  hashes = [
+    "h1:0aYTG685f2z0JM0nv4vOOP450UH3MNadH1BB42Qq5OA=",
+    "zh:1e0b9ff0f9dc4297a7603b821a3df89498afc4634d0470cbd082ba342b4e848f",
+    "zh:1e63403399dc7fcf945c446d3888ab715198e649033e8911c757a0a479b92ad4",
+    "zh:26d2beaa659ed3480eac47332d1c1c8677f714f6af42b159bedb30b6ebe242d0",
+    "zh:284ef453a4077c41d796c2ffc278b255ea7d7d8471675b57e184e34026c175a8",
+    "zh:2d27793c1ba3e18c79b594367c70b13b5b17cb9733f983d3fda8164db3f8e25a",
+    "zh:2ecdfc2a2f4d717c684e96008e9ac72c6695adcf3dd605bc214f564e88d94111",
+    "zh:4edf38b0bf8506129fb6edb7803b956e2151ad72b7f8dd084a8ea11859b05717",
+    "zh:6149c209648483406861996e56297bc19a536c0de423b37ddbcdb50b6671aa81",
+    "zh:7f1de5be9c7b450e3e18f90c74b325d60de0495606500a875b3e230b135341eb",
+    "zh:8bd4b64aa7fec563be5d0770cfba3a32b6d69f981c671504f5104af220dc1058",
+    "zh:b183c25556b3cc0402fecfc1510fe14d604143ea674d11be44ac60be141bc4d0",
+    "zh:c4f980c47fb25bdedf7ef9d418ef36d37d68886db76bddb9b716a939175658e3",
+    "zh:d422a884ee9d4889cb278cbeb64af469974a4aec2d0875610c22a909def797a8",
+    "zh:e065699c505b00a073ac013a043a8ae7b44ad7b0fa5eed7cc728d06560ea3746",
+    "zh:f809ab383cca0a5f83072981c64208cbd7fa67e986a86ee02dd2c82333221e32",
+  ]
+}
