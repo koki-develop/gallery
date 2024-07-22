@@ -1,3 +1,7 @@
+module "fetch_image" {
+  source = "./functions/fetch_image"
+}
+
 resource "js_function_call" "hello" {
   caller   = "console"
   function = "log"
@@ -6,7 +10,10 @@ resource "js_function_call" "hello" {
 
 resource "js_function" "handler" {
   async = true
-  body  = [js_function_call.hello.content]
+  body = [
+    module.fetch_image.content,
+    js_function_call.hello.content,
+  ]
 }
 
 data "js_raw" "exports_handler" {
