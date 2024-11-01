@@ -2,7 +2,7 @@
 # function fetchImage(id, width, height)
 #
 
-resource "js_function" "fetch_image" {
+resource "js_function" "main" {
   async = true
   name  = "fetchImage"
   body = [

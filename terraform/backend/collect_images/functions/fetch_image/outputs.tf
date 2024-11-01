@@ -1,3 +1,3 @@
-output "content" {
-  value = js_function.fetch_image.content
+output "this" {
+  value = js_function.main
 }

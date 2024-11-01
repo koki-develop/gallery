@@ -12,7 +12,7 @@ resource "js_function" "handler" {
   name  = "handler"
   async = true
   body = [
-    module.fetch_image.content,
+    module.fetch_image.this.content,
     js_function_call.hello.content,
   ]
 }
