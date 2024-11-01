@@ -5,6 +5,11 @@
 data "js_function" "main" {
   async = true
   name  = "fetchImage"
+  params = [
+    data.js_function_param.id.id,
+    data.js_function_param.width.id,
+    data.js_function_param.height.id,
+  ]
   body = [
     data.js_const.url.content,
     data.js_const.response.content,
