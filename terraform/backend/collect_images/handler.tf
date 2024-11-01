@@ -1,9 +1,18 @@
 #
+# import * as s3 from "@aws-sdk/client-s3";
+#
+
+data "js_import" "s3" {
+  from = "@aws-sdk/client-s3"
+  as   = "s3"
+}
+
+#
 # const s3Client = new S3Client();
 #
 
 data "js_function_call" "s3_client" {
-  function = "S3Client"
+  function = "s3.S3Client"
 }
 
 data "js_new" "s3_client" {
@@ -53,6 +62,7 @@ data "js_export" "handler" {
 
 data "js_program" "main" {
   contents = [
+    data.js_import.s3.content,
     data.js_const.s3_client.content,
     module.fetch_image.this.content,
     module.save_image.this.content,
