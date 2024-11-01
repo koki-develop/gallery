@@ -86,12 +86,8 @@ data "js_throw" "error" {
 }
 
 data "js_new" "error" {
-  value = data.js_function_call.error.content
-}
-
-data "js_function_call" "error" {
-  function = "Error"
-  args     = [data.js_raw.error_message.content]
+  constructor = "Error"
+  args        = [data.js_raw.error_message.content]
 }
 
 data "js_raw" "error_message" {
@@ -146,12 +142,8 @@ data "js_const" "body" {
 }
 
 data "js_new" "uint8_array" {
-  value = data.js_function_call.uint8_array.content
-}
-
-data "js_function_call" "uint8_array" {
-  function = "Uint8Array"
-  args     = [data.js_const.buffer.id]
+  constructor = "Uint8Array"
+  args        = [data.js_const.buffer.id]
 }
 
 #

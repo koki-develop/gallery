@@ -11,12 +11,8 @@ data "js_import" "s3" {
 # const s3Client = new S3Client();
 #
 
-data "js_function_call" "s3_client" {
-  function = "s3.S3Client"
-}
-
 data "js_new" "s3_client" {
-  value = data.js_function_call.s3_client.content
+  constructor = "s3.S3Client"
 }
 
 data "js_const" "s3_client" {

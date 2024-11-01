@@ -32,18 +32,14 @@ data "js_function_param" "contentType" {
 # const command = new PutObjectCommand(input)
 #
 
-data "js_function_call" "put_object_command" {
-  function = "PutObjectCommand"
+data "js_new" "put_object_command" {
+  constructor = "PutObjectCommand"
   args = [{
     Bucket      = "${var.name}-images"
     Key         = data.js_function_param.key.id
     Body        = data.js_function_param.body.id
     ContentType = data.js_function_param.contentType.id
   }]
-}
-
-data "js_new" "put_object_command" {
-  value = data.js_function_call.put_object_command.content
 }
 
 data "js_const" "command" {
