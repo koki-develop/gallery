@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "assume_role" {
 
 data "archive_file" "index_js" {
   type                    = "zip"
-  output_path             = "${path.module}/index.js.zip"
-  source_content_filename = "index.js"
+  output_path             = "${path.module}/index.mjs.zip"
+  source_content_filename = "index.mjs"
   source_content          = data.js_program.main.content
 }
