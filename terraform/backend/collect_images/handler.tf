@@ -1,6 +1,37 @@
+#
+# const s3Client = new S3Client();
+#
+
+data "js_function_call" "s3_client" {
+  function = "S3Client"
+}
+
+data "js_new" "s3_client" {
+  value = data.js_function_call.s3_client.content
+}
+
+data "js_const" "s3_client" {
+  name  = "s3Client"
+  value = data.js_new.s3_client.content
+}
+
+#
+# define functions
+#
+
 module "fetch_image" {
   source = "./functions/fetch_image"
 }
+
+module "save_image" {
+  source       = "./functions/save_image"
+  name         = var.name
+  s3_client_id = data.js_const.s3_client.id
+}
+
+#
+# handler
+#
 
 data "js_function_call" "hello" {
   caller   = "console"
@@ -22,7 +53,9 @@ data "js_export" "handler" {
 
 data "js_program" "main" {
   contents = [
+    data.js_const.s3_client.content,
     module.fetch_image.this.content,
+    module.save_image.this.content,
     data.js_export.handler.content,
   ]
 }
