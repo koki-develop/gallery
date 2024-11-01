@@ -34,6 +34,10 @@ module "save_image" {
   s3_client_id = data.js_const.s3_client.id
 }
 
+module "list_images" {
+  source = "./functions/list_images"
+}
+
 #
 # handler
 #
@@ -62,6 +66,7 @@ data "js_program" "main" {
     data.js_const.s3_client.content,
     module.fetch_image.this.content,
     module.save_image.this.content,
+    module.list_images.this.content,
     data.js_export.handler.content,
   ]
 }
