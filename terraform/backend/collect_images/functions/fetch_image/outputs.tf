@@ -1,3 +1,3 @@
 output "this" {
-  value = js_function.main
+  value = data.js_function.main
 }

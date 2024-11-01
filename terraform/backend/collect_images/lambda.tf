@@ -30,5 +30,5 @@ data "archive_file" "index_js" {
   type                    = "zip"
   output_path             = "${path.module}/index.js.zip"
   source_content_filename = "index.js"
-  source_content          = js_program.main.content
+  source_content          = data.js_program.main.content
 }
