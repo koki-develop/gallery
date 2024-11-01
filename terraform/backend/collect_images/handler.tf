@@ -9,6 +9,7 @@ resource "js_function_call" "hello" {
 }
 
 resource "js_function" "handler" {
+  name  = "handler"
   async = true
   body = [
     module.fetch_image.content,
@@ -16,16 +17,10 @@ resource "js_function" "handler" {
   ]
 }
 
-data "js_raw" "exports_handler" {
-  value = "exports.handler"
-}
-
-resource "js_operation" "exports_handler" {
-  left     = data.js_raw.exports_handler.content
-  operator = "="
-  right    = js_function.handler.content
+resource "js_export" "handler" {
+  value = js_function.handler.content
 }
 
 resource "js_program" "main" {
-  contents = [js_operation.exports_handler.content]
+  contents = [js_export.handler.content]
 }
