@@ -12,7 +12,6 @@ data "js_function" "handler" {
   name  = "handler"
   async = true
   body = [
-    module.fetch_image.this.content,
     data.js_function_call.hello.content,
   ]
 }
@@ -22,5 +21,8 @@ data "js_export" "handler" {
 }
 
 data "js_program" "main" {
-  contents = [data.js_export.handler.content]
+  contents = [
+    module.fetch_image.this.content,
+    data.js_export.handler.content,
+  ]
 }
