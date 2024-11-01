@@ -1,4 +1,4 @@
-module "collect_images" {
+module "backend" {
   name   = local.name
-  source = "./backend/collect_images"
+  source = "./backend"
 }
