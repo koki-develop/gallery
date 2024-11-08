@@ -29,7 +29,8 @@ module "frontend" {
 }
 
 resource "aws_s3_object" "frontend_index" {
-  bucket  = module.s3_bucket_frontend.this.id
-  key     = "index.html"
-  content = module.frontend.index_html
+  bucket       = module.s3_bucket_frontend.this.id
+  key          = "index.html"
+  content      = module.frontend.index_html
+  content_type = "text/html"
 }
