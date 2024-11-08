@@ -23,3 +23,13 @@ data "aws_iam_policy_document" "s3_bucket_frontend_policy" {
     }
   }
 }
+
+module "frontend" {
+  source = "../frontend"
+}
+
+resource "aws_s3_object" "frontend_index" {
+  bucket  = module.s3_bucket_frontend.this.id
+  key     = "index.html"
+  content = module.frontend.index_html
+}
