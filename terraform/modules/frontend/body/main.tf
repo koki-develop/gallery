@@ -1,3 +1,9 @@
+module "header" {
+  source = "./components/header"
+}
+
 data "html_body" "main" {
-  children = ["Hello, world"]
+  children = [
+    module.header.html,
+  ]
 }
