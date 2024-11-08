@@ -21,5 +21,6 @@ data "html_title" "main" {
 }
 
 data "html_script" "tailwind" {
-  src = "https://cdn.tailwindcss.com"
+  src      = "https://cdn.tailwindcss.com"
+  children = []
 }
