@@ -7,7 +7,8 @@ data "aws_cloudfront_cache_policy" "caching_disabled" {
 }
 
 resource "aws_cloudfront_distribution" "frontend" {
-  enabled = true
+  enabled             = true
+  default_root_object = "index.html"
 
   origin {
     origin_id                = module.s3_bucket_frontend.this.id
