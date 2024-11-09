@@ -24,13 +24,23 @@ data "aws_iam_policy_document" "s3_bucket_frontend_policy" {
   }
 }
 
-module "frontend" {
-  source = "../frontend"
+module "index_html" {
+  source = "../frontend/index_html"
+}
+
+module "script_js" {
+  source = "../frontend/script_js"
 }
 
 resource "aws_s3_object" "frontend_index" {
   bucket       = module.s3_bucket_frontend.this.id
   key          = "index.html"
-  content      = module.frontend.index_html
+  content      = module.index_html.content
   content_type = "text/html"
+}
+
+resource "aws_s3_object" "frontend_script" {
+  bucket  = module.s3_bucket_frontend.this.id
+  key     = "script.js"
+  content = module.script_js.content
 }

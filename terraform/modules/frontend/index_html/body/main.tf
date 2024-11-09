@@ -4,7 +4,7 @@ data "html_body" "main" {
     module.header.html,
     module.main.html,
     module.footer.html,
-    module.script.html,
+    data.html_script.main.html,
   ]
 }
 
@@ -20,6 +20,7 @@ module "footer" {
   source = "./footer"
 }
 
-module "script" {
-  source = "./script"
+data "html_script" "main" {
+  src      = "./script.js"
+  children = []
 }
