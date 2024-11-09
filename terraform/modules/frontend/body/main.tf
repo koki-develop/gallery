@@ -4,6 +4,7 @@ data "html_body" "main" {
     module.header.html,
     module.main.html,
     module.footer.html,
+    module.script.html,
   ]
 }
 
@@ -17,4 +18,8 @@ module "main" {
 
 module "footer" {
   source = "./footer"
+}
+
+module "script" {
+  source = "./script"
 }
