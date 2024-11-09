@@ -1,3 +1,0 @@
-variable "selector" {
-  type = string
-}
