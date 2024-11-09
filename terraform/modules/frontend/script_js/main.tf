@@ -1,11 +1,23 @@
 data "js_program" "main" {
   contents = [
+    data.js_const.image_list_template.content,
     module.function_fetch_images.this.content,
     module.function_calc_thumb_size.this.content,
     module.function_build_image_list.this.content,
     data.js_function.main.content,
     data.js_function_call.main.content,
   ]
+}
+
+data "js_const" "image_list_template" {
+  name  = "imageListTemplate"
+  value = data.js_function_call.image_list_template.content
+}
+
+data "js_function_call" "image_list_template" {
+  caller   = "document"
+  function = "querySelector"
+  args     = ["#image-list-template"]
 }
 
 module "function_fetch_images" {
@@ -18,7 +30,7 @@ module "function_calc_thumb_size" {
 
 module "function_build_image_list" {
   source                            = "./functions/build_image_list"
-  const_image_list_template_id      = "imageListTemplate"  # TODO
+  const_image_list_template_id      = data.js_const.image_list_template.id
   function_build_image_list_item_id = "buildImageListItem" # TODO
 }
 
