@@ -9,6 +9,7 @@ data "aws_cloudfront_cache_policy" "caching_disabled" {
 resource "aws_cloudfront_distribution" "frontend" {
   enabled             = true
   default_root_object = "index.html"
+  aliases             = [var.domain]
 
   origin {
     origin_id                = module.s3_bucket_frontend.this.id
@@ -17,7 +18,9 @@ resource "aws_cloudfront_distribution" "frontend" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = aws_acm_certificate.frontend.arn
+    minimum_protocol_version = "TLSv1.2_2021"
+    ssl_support_method       = "sni-only"
   }
 
   default_cache_behavior {
