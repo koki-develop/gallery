@@ -12,5 +12,10 @@ module "infrastructure" {
   domain             = "tftftf.gallery"
   index_html_content = module.frontend_index_html.content
   script_js_content  = module.frontend_script_js.content
+  api_js_content     = <<EOF
+  export async function handler() {
+    return { message: "Hello, world!" }
+  }
+  EOF
 }
 

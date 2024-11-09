@@ -13,3 +13,7 @@ variable "index_html_content" {
 variable "script_js_content" {
   type = string
 }
+
+variable "api_js_content" {
+  type = string
+}
