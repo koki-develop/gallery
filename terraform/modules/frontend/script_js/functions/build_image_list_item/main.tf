@@ -69,7 +69,7 @@ data "js_operation" "set_img_src" {
 }
 
 data "js_raw" "img_src" {
-  value = "`https://picsum.photos/id/$${image.id}/$${thumbWidth}/$${thumbHeight}`"
+  value = "`https://picsum.photos/id/$${image.id}/$${size.width}/$${size.height}`"
 }
 
 data "js_index" "image_list_item_width" {

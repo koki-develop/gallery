@@ -76,8 +76,8 @@ data "js_const" "thumb_height" {
 
 data "js_conditional_operation" "thumb_height" {
   condition = data.js_operation.aspect_ratio_ge_1.content
-  if_true   = data.js_const.max_size.id
-  if_false  = data.js_function_call.floor_max_size_div_aspect_ratio.content
+  if_true   = data.js_function_call.floor_max_size_div_aspect_ratio.content
+  if_false  = data.js_const.max_size.id
 }
 
 data "js_function_call" "floor_max_size_div_aspect_ratio" {

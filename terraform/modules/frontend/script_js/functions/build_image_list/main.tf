@@ -3,7 +3,7 @@ data "js_function" "main" {
   params = [data.js_function_param.images.id]
   body = [
     data.js_const.image_list.content,
-    data.js_function_call.image_list_for_each.content,
+    data.js_function_call.images_for_each.content,
     data.js_return.main.content,
   ]
 }
@@ -28,8 +28,8 @@ data "js_function_call" "image_list_template_content_clone_node" {
   args     = [true]
 }
 
-data "js_function_call" "image_list_for_each" {
-  caller   = data.js_const.image_list.id
+data "js_function_call" "images_for_each" {
+  caller   = data.js_function_param.images.id
   function = "forEach"
   args     = [data.js_function.build_image_list_item.content]
 }
