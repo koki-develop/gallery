@@ -9,7 +9,7 @@ data "html_main" "main" {
 }
 
 module "templates" {
-  source = "../templates"
+  source = "./templates"
 }
 
 data "html_div" "loader" {

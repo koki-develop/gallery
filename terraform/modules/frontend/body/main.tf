@@ -8,13 +8,13 @@ data "html_body" "main" {
 }
 
 module "header" {
-  source = "./components/header"
+  source = "./header"
 }
 
 module "main" {
-  source = "./components/main"
+  source = "./main"
 }
 
 module "footer" {
-  source = "./components/footer"
+  source = "./footer"
 }
