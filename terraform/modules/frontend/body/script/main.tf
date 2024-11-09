@@ -5,6 +5,7 @@ data "html_script" "main" {
 data "js_program" "main" {
   contents = [
     module.function_fetch_images.this.content,
+    module.function_calc_thumb_size.this.content,
     data.js_function.main.content,
     data.js_function_call.main.content,
   ]
@@ -12,6 +13,10 @@ data "js_program" "main" {
 
 module "function_fetch_images" {
   source = "./functions/fetch_images"
+}
+
+module "function_calc_thumb_size" {
+  source = "./functions/calc_thumb_size"
 }
 
 data "js_function" "main" {
