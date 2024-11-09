@@ -3,6 +3,8 @@ data "js_program" "main" {
     # variables
     data.js_const.app.content,
     data.js_const.loader.content,
+    data.js_const.modal.content,
+    data.js_const.modal_image_template.content,
     data.js_const.image_list_template.content,
     data.js_const.image_list_item_template.content,
 
@@ -44,6 +46,17 @@ data "js_function_call" "loader" {
   args     = ["#loader"]
 }
 
+data "js_const" "modal" {
+  name  = "modal"
+  value = data.js_function_call.modal.content
+}
+
+data "js_function_call" "modal" {
+  caller   = "document"
+  function = "querySelector"
+  args     = ["#modal"]
+}
+
 data "js_const" "image_list_template" {
   name  = "imageListTemplate"
   value = data.js_function_call.image_list_template.content
@@ -66,6 +79,17 @@ data "js_function_call" "image_list_item_template" {
   args     = ["#image-list-item-template"]
 }
 
+data "js_const" "modal_image_template" {
+  name  = "modalImageTemplate"
+  value = data.js_function_call.modal_image_template.content
+}
+
+data "js_function_call" "modal_image_template" {
+  caller   = "document"
+  function = "querySelector"
+  args     = ["#modal-image-template"]
+}
+
 module "function_fetch_images" {
   source = "./functions/fetch_images"
 }
@@ -83,6 +107,8 @@ module "function_build_image_list" {
 module "function_build_image_list_item" {
   source                            = "./functions/build_image_list_item"
   const_image_list_item_template_id = data.js_const.image_list_item_template.id
+  const_modal_id                    = data.js_const.modal.id
+  const_modal_image_template_id     = data.js_const.modal_image_template.id
   function_calc_thumb_size_id       = module.function_calc_thumb_size.this.id
 }
 
