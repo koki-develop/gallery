@@ -2,9 +2,14 @@ data "html_main" "main" {
   id    = "app"
   class = "py-4 px-2 container mx-auto flex-grow"
   children = [
+    module.templates.html,
     data.html_div.loader.html,
     data.html_dialog.modal.html,
   ]
+}
+
+module "templates" {
+  source = "../templates"
 }
 
 data "html_div" "loader" {
