@@ -46,3 +46,26 @@ provider "registry.terraform.io/koki-develop/html" {
     "zh:fa4dce5d78dd6fca1f528654fa3315c392a3af178eb1d2330d8939aa2038da7a",
   ]
 }
+
+provider "registry.terraform.io/koki-develop/js" {
+  version     = "0.9.0"
+  constraints = "0.9.0"
+  hashes = [
+    "h1:bN8V4YnVTnS1CCFYUlfS40yzqkAFfH+bqnfSQ937Cbs=",
+    "zh:106ce601b462db4160f1939af5873d3ec588e18cc52be1c0d9b128ccebaaac42",
+    "zh:353d3c056cde83086918f7ca226a945a065df142a87b7062a48b2f116ba0e59d",
+    "zh:5215c0323542c985f2591cd73062aa76c214aebf60b19dd3bf7a05c569cb35be",
+    "zh:54735fa1060f234c7a3b5aebaded3ff2727365ecb858cf3d40fd8172b7969185",
+    "zh:66dba83a4c9bb688b10b06fd0e3e6ba855098c5f11e85a00692589247833e58f",
+    "zh:72a42e0f8d22ea6191622aaf478b02963c2ab5532fd84088ab3ac7dfb182bc35",
+    "zh:78364b4da398406b7ac28501a6c4304df34aa0de2fb8abaa59ef5bb42dce63b4",
+    "zh:90badb4d1af2bb2f0348a1c4cce68e30b010fe140846d79aafa2d1e042b33d64",
+    "zh:97f061068225fa7e18a032833b3dcb8bea4545b6948038b2d7d61f3c0253aec4",
+    "zh:aaa395db1e329cb0f75281df9c6372e5abd07a75fa0758220a24fa7d37bf7f8a",
+    "zh:b41845a28feae9f72fc4dc0257007bf97c1a4e0a1c9809b316e3d1f3001f8f49",
+    "zh:b9c540e66448c1c82331a0a8d0c24dba4e8580f0bd948da03439d4d1273db3ca",
+    "zh:de1386e69a142259700cd1d0b0e4aa4d44a366d432c5cccfbf28a08abeacbc0e",
+    "zh:ef52613208ff9b6234e8d620abb1992d0a841909c69bc038a47fdb0d9c084f92",
+    "zh:f809ab383cca0a5f83072981c64208cbd7fa67e986a86ee02dd2c82333221e32",
+  ]
+}
