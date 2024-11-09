@@ -2,11 +2,11 @@ data "js_function" "main" {
   name   = "calcThumbSize"
   params = [data.js_function_param.image.id]
   body = [
-    data.js_const.max_size.content,
-    data.js_const.aspect_ratio.content,
-    data.js_const.thumb_width.content,
-    data.js_const.thumb_height.content,
-    data.js_return.main.content,
+    data.js_const.max_size.statement,
+    data.js_const.aspect_ratio.statement,
+    data.js_const.thumb_width.statement,
+    data.js_const.thumb_height.statement,
+    data.js_return.main.statement,
   ]
 }
 
@@ -21,7 +21,7 @@ data "js_const" "max_size" {
 
 data "js_const" "aspect_ratio" {
   name  = "aspectRatio"
-  value = data.js_operation.width_div_height.content
+  value = data.js_operation.width_div_height.expression
 }
 
 data "js_operation" "width_div_height" {
@@ -48,19 +48,19 @@ data "js_operation" "aspect_ratio_ge_1" {
 
 data "js_const" "thumb_width" {
   name  = "thumbWidth"
-  value = data.js_conditional_operation.thumb_width.content
+  value = data.js_conditional_operation.thumb_width.expression
 }
 
 data "js_conditional_operation" "thumb_width" {
-  condition = data.js_operation.aspect_ratio_ge_1.content
+  condition = data.js_operation.aspect_ratio_ge_1.expression
   if_true   = data.js_const.max_size.id
-  if_false  = data.js_function_call.floor_max_size_times_aspect_ratio.content
+  if_false  = data.js_function_call.floor_max_size_times_aspect_ratio.expression
 }
 
 data "js_function_call" "floor_max_size_times_aspect_ratio" {
   caller   = "Math"
   function = "floor"
-  args     = [data.js_operation.max_size_times_aspect_ratio.content]
+  args     = [data.js_operation.max_size_times_aspect_ratio.expression]
 }
 
 data "js_operation" "max_size_times_aspect_ratio" {
@@ -71,19 +71,19 @@ data "js_operation" "max_size_times_aspect_ratio" {
 
 data "js_const" "thumb_height" {
   name  = "thumbHeight"
-  value = data.js_conditional_operation.thumb_height.content
+  value = data.js_conditional_operation.thumb_height.expression
 }
 
 data "js_conditional_operation" "thumb_height" {
-  condition = data.js_operation.aspect_ratio_ge_1.content
-  if_true   = data.js_function_call.floor_max_size_div_aspect_ratio.content
+  condition = data.js_operation.aspect_ratio_ge_1.expression
+  if_true   = data.js_function_call.floor_max_size_div_aspect_ratio.expression
   if_false  = data.js_const.max_size.id
 }
 
 data "js_function_call" "floor_max_size_div_aspect_ratio" {
   caller   = "Math"
   function = "floor"
-  args     = [data.js_operation.max_size_div_aspect_ratio.content]
+  args     = [data.js_operation.max_size_div_aspect_ratio.expression]
 }
 
 data "js_operation" "max_size_div_aspect_ratio" {
