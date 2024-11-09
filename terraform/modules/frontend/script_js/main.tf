@@ -2,6 +2,7 @@ data "js_program" "main" {
   contents = [
     module.function_fetch_images.this.content,
     module.function_calc_thumb_size.this.content,
+    module.function_build_image_list.this.content,
     data.js_function.main.content,
     data.js_function_call.main.content,
   ]
@@ -13,6 +14,12 @@ module "function_fetch_images" {
 
 module "function_calc_thumb_size" {
   source = "./functions/calc_thumb_size"
+}
+
+module "function_build_image_list" {
+  source                            = "./functions/build_image_list"
+  const_image_list_template_id      = "imageListTemplate"  # TODO
+  function_build_image_list_item_id = "buildImageListItem" # TODO
 }
 
 data "js_function" "main" {
