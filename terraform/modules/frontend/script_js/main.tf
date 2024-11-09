@@ -116,6 +116,7 @@ data "js_function" "main" {
   name  = "main"
   async = true
   body = [
+    data.js_function_call.modal_add_event_listener.content,
     data.js_const.images.content,
     data.js_function_call.loader_remove.content,
     data.js_const.image_list.content,
@@ -149,6 +150,42 @@ data "js_const" "image_list" {
 data "js_function_call" "build_image_list" {
   function = module.function_build_image_list.this.id
   args     = [data.js_const.images.id]
+}
+
+data "js_function_call" "modal_add_event_listener" {
+  caller   = data.js_const.modal.id
+  function = "addEventListener"
+  args     = ["click", data.js_function.modal_close.content]
+}
+
+data "js_function" "modal_close" {
+  params = [data.js_function_param.event.id]
+  body   = [data.js_if.modal_click_is_modal.content]
+}
+
+data "js_function_param" "event" {
+  name = "event"
+}
+
+data "js_if" "modal_click_is_modal" {
+  condition = data.js_operation.modal_click_is_modal.content
+  then      = [data.js_function_call.modal_close.content]
+}
+
+data "js_operation" "modal_click_is_modal" {
+  left     = data.js_index.event_target.content
+  operator = "==="
+  right    = data.js_const.modal.id
+}
+
+data "js_index" "event_target" {
+  ref   = data.js_function_param.event.id
+  value = "target"
+}
+
+data "js_function_call" "modal_close" {
+  caller   = data.js_const.modal.id
+  function = "close"
 }
 
 data "js_function_call" "app_append_child" {
