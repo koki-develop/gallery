@@ -1,4 +1,4 @@
-data "js_function" "build_image_list" {
+data "js_function" "main" {
   name   = "buildImageList"
   params = [data.js_function_param.images.id]
   body = [

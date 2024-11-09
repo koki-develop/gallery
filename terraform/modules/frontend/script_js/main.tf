@@ -1,9 +1,11 @@
 data "js_program" "main" {
   contents = [
     data.js_const.image_list_template.content,
+    data.js_const.image_list_item_template.content,
     module.function_fetch_images.this.content,
     module.function_calc_thumb_size.this.content,
     module.function_build_image_list.this.content,
+    module.function_build_image_list_item.this.content,
     data.js_function.main.content,
     data.js_function_call.main.content,
   ]
@@ -20,6 +22,17 @@ data "js_function_call" "image_list_template" {
   args     = ["#image-list-template"]
 }
 
+data "js_const" "image_list_item_template" {
+  name  = "imageListItemTemplate"
+  value = data.js_function_call.image_list_item_template.content
+}
+
+data "js_function_call" "image_list_item_template" {
+  caller   = "document"
+  function = "querySelector"
+  args     = ["#image-list-item-template"]
+}
+
 module "function_fetch_images" {
   source = "./functions/fetch_images"
 }
@@ -32,6 +45,12 @@ module "function_build_image_list" {
   source                            = "./functions/build_image_list"
   const_image_list_template_id      = data.js_const.image_list_template.id
   function_build_image_list_item_id = "buildImageListItem" # TODO
+}
+
+module "function_build_image_list_item" {
+  source                            = "./functions/build_image_list_item"
+  const_image_list_item_template_id = data.js_const.image_list_item_template.id
+  function_calc_thumb_size_id       = module.function_calc_thumb_size.this.id
 }
 
 data "js_function" "main" {
