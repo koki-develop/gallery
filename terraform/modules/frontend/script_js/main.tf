@@ -101,7 +101,7 @@ module "function_calc_thumb_size" {
 module "function_build_image_list" {
   source                            = "./functions/build_image_list"
   const_image_list_template_id      = data.js_const.image_list_template.id
-  function_build_image_list_item_id = "buildImageListItem" # TODO
+  function_build_image_list_item_id = module.function_build_image_list_item.this.id
 }
 
 module "function_build_image_list_item" {
