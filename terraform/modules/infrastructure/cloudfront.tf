@@ -30,6 +30,7 @@ resource "aws_cloudfront_distribution" "frontend" {
     allowed_methods          = ["GET", "HEAD"]
     origin_request_policy_id = data.aws_cloudfront_origin_request_policy.cors_s3_origin.id
     cache_policy_id          = data.aws_cloudfront_cache_policy.caching_optimized.id
+    compress                 = true
   }
 
   restrictions {
