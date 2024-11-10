@@ -18,7 +18,7 @@ data "js_await" "fetch" {
 
 data "js_function_call" "fetch" {
   function = "fetch"
-  args     = ["https://picsum.photos/v2/list?limit=50"]
+  args     = [var.api_endpoint]
 }
 
 data "js_function_call" "fetch_then" {

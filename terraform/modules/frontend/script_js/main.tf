@@ -91,7 +91,8 @@ data "js_function_call" "modal_image_template" {
 }
 
 module "function_fetch_images" {
-  source = "./functions/fetch_images"
+  source       = "./functions/fetch_images"
+  api_endpoint = "${var.api_base_url}/images"
 }
 
 module "function_calc_thumb_size" {
