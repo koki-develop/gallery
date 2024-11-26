@@ -49,12 +49,12 @@ data "html_style" "main" {
     }
 
     .loader.light {
-      border-color: gray;
+      border-color: dimgray;
       border-bottom-color: transparent;
     }
 
     .loader.dark {
-      border-color: #fff;
+      border-color: white;
       border-bottom-color: transparent;
     }
     EOF
