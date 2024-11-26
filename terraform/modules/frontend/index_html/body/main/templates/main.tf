@@ -20,10 +20,16 @@ data "html_img" "image_list_item" {
 
 data "html_template" "modal_image" {
   id       = "modal-image-template"
-  children = [data.html_img.modal_image.html]
+  children = [data.html_img.modal_image.html, data.html_div.modal_image_loader.html]
 }
 
 data "html_img" "modal_image" {
   class = "max-h-[80dvh] max-w-[80dvw] object-contain"
   alt   = ""
+}
+
+data "html_div" "modal_image_loader" {
+  id       = "modal-image-loader"
+  class    = "loader dark"
+  children = []
 }
