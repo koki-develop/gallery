@@ -6,10 +6,10 @@ variable "const_modal_id" {
   type = string
 }
 
-variable "const_modal_image_template_id" {
+variable "function_calc_thumb_size_id" {
   type = string
 }
 
-variable "function_calc_thumb_size_id" {
+variable "function_build_modal_image_id" {
   type = string
 }

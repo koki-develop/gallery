@@ -115,8 +115,8 @@ module "function_build_image_list_item" {
   source                            = "./functions/build_image_list_item"
   const_image_list_item_template_id = data.js_const.image_list_item_template.id
   const_modal_id                    = data.js_const.modal.id
-  const_modal_image_template_id     = data.js_const.modal_image_template.id
   function_calc_thumb_size_id       = module.function_calc_thumb_size.this.id
+  function_build_modal_image_id     = module.function_build_modal_image.this.id
 }
 
 data "js_function" "main" {

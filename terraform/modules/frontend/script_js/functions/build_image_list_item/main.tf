@@ -104,7 +104,6 @@ data "js_function_call" "image_list_item_add_event_listener" {
 data "js_function" "show_modal" {
   body = [
     data.js_const.modal_image.statement,
-    data.js_operation.set_modal_image_src.statement,
     data.js_operation.empty_modal_inner_html.statement,
     data.js_function_call.modal_append_child.statement,
     data.js_function_call.modal_show_modal.statement,
@@ -113,35 +112,12 @@ data "js_function" "show_modal" {
 
 data "js_const" "modal_image" {
   name  = "modalImage"
-  value = data.js_function_call.modal_image_template_content_clone_node.expression
+  value = data.js_function_call.build_modal_image.expression
 }
 
-data "js_index" "modal_image_template_content" {
-  ref   = var.const_modal_image_template_id
-  value = "content"
-}
-
-data "js_function_call" "modal_image_template_content_clone_node" {
-  caller   = data.js_index.modal_image_template_content.id
-  function = "cloneNode"
-  args     = [true]
-}
-
-data "js_function_call" "modal_image_query_selector" {
-  caller   = data.js_const.modal_image.id
-  function = "querySelector"
-  args     = ["img"]
-}
-
-data "js_index" "modal_image_src" {
-  ref   = data.js_function_call.modal_image_query_selector.expression
-  value = "src"
-}
-
-data "js_operation" "set_modal_image_src" {
-  left     = data.js_index.modal_image_src.expression
-  operator = "="
-  right    = data.js_index.image_download_url.expression
+data "js_function_call" "build_modal_image" {
+  function = var.function_build_modal_image_id
+  args     = [data.js_index.image_download_url.expression]
 }
 
 data "js_index" "image_download_url" {
