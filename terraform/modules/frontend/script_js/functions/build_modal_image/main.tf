@@ -47,7 +47,7 @@ data "js_operation" "set_modal_image_src" {
 }
 
 data "js_function_call" "modal_image_add_event_listener" {
-  caller   = data.js_const.modal_image.id
+  caller   = data.js_function_call.modal_image_query_selector.expression
   function = "addEventListener"
   args     = ["load", data.js_function.on_load.expression]
 }
