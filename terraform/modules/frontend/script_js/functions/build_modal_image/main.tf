@@ -3,6 +3,8 @@ data "js_function" "main" {
   params = [data.js_function_param.src.id]
   body = [
     data.js_const.modal_image.statement,
+    data.js_const.img.statement,
+    data.js_const.loader.statement,
     data.js_operation.set_modal_image_src.statement,
     data.js_function_call.modal_image_add_event_listener.statement,
     data.js_return.modal_image.statement
@@ -29,14 +31,30 @@ data "js_function_call" "modal_image_template_content_clone_node" {
   args     = [true]
 }
 
+data "js_const" "img" {
+  name  = "img"
+  value = data.js_function_call.modal_image_query_selector.expression
+}
+
 data "js_function_call" "modal_image_query_selector" {
   caller   = data.js_const.modal_image.id
   function = "querySelector"
   args     = ["img"]
 }
 
+data "js_const" "loader" {
+  name  = "loader"
+  value = data.js_function_call.modal_image_loader.expression
+}
+
+data "js_function_call" "modal_image_loader" {
+  caller   = data.js_const.modal_image.id
+  function = "querySelector"
+  args     = ["#modal-image-loader"]
+}
+
 data "js_index" "modal_image_src" {
-  ref   = data.js_function_call.modal_image_query_selector.expression
+  ref   = data.js_const.img.id
   value = "src"
 }
 
@@ -47,7 +65,7 @@ data "js_operation" "set_modal_image_src" {
 }
 
 data "js_function_call" "modal_image_add_event_listener" {
-  caller   = data.js_function_call.modal_image_query_selector.expression
+  caller   = data.js_const.img.id
   function = "addEventListener"
   args     = ["load", data.js_function.on_load.expression]
 }
@@ -60,7 +78,7 @@ data "js_function" "on_load" {
 }
 
 data "js_index" "modal_image_class_list" {
-  ref   = data.js_function_call.modal_image_query_selector.expression
+  ref   = data.js_const.img.id
   value = "classList"
 }
 
@@ -70,14 +88,14 @@ data "js_function_call" "modal_image_class_list_remove" {
   args     = ["hidden"]
 }
 
-data "js_function_call" "modal_image_loader" {
-  caller   = data.js_const.modal_image.id
-  function = "querySelector"
-  args     = ["#modal-image-loader"]
+data "js_function_call" "modal_image_loader_remove" {
+  caller   = data.js_const.loader.id
+  function = "remove"
+  args     = ["hidden"]
 }
 
 data "js_index" "modal_image_loader_class_list" {
-  ref   = data.js_function_call.modal_image_loader.expression
+  ref   = data.js_const.loader.id
   value = "classList"
 }
 
