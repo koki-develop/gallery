@@ -11,6 +11,7 @@ data "js_program" "main" {
     # functions
     module.function_fetch_images.this.statement,
     module.function_calc_thumb_size.this.statement,
+    module.function_build_modal_image.this.statement,
     module.function_build_image_list.this.statement,
     module.function_build_image_list_item.this.statement,
 
@@ -97,6 +98,11 @@ module "function_fetch_images" {
 
 module "function_calc_thumb_size" {
   source = "./functions/calc_thumb_size"
+}
+
+module "function_build_modal_image" {
+  source                        = "./functions/build_modal_image"
+  const_modal_image_template_id = data.js_const.modal_image_template.id
 }
 
 module "function_build_image_list" {
