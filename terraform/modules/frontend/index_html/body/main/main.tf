@@ -25,6 +25,6 @@ data "html_div" "loader" {
 
 data "html_dialog" "modal" {
   id       = "modal"
-  class    = "p-0 outline-none backdrop:bg-black/80"
+  class    = "p-0 outline-none bg-transparent backdrop:bg-black/80"
   children = []
 }
