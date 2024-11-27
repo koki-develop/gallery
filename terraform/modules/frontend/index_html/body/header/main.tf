@@ -7,7 +7,7 @@ data "html_header" "main" {
 }
 
 data "html_h1" "main" {
-  class    = "text-3xl font-bold"
+  class    = "text-3xl"
   children = ["Gallery"]
 }
 
