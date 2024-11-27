@@ -35,6 +35,10 @@ data "html_link" "font" {
 data "html_style" "main" {
   children = [
     <<-EOF
+    body {
+      font-family: 'Crimson Text';
+    }
+
     .loader {
       width: 48px;
       height: 48px;
