@@ -72,8 +72,8 @@ data "js_function_call" "modal_image_add_event_listener" {
 
 data "js_function" "on_load" {
   body = [
+    data.js_function_call.modal_image_loader_remove.statement,
     data.js_function_call.modal_image_class_list_remove.statement,
-    data.js_function_call.modal_image_loader_class_list_add.statement
   ]
 }
 
@@ -91,18 +91,7 @@ data "js_function_call" "modal_image_class_list_remove" {
 data "js_function_call" "modal_image_loader_remove" {
   caller   = data.js_const.loader.id
   function = "remove"
-  args     = ["hidden"]
-}
-
-data "js_index" "modal_image_loader_class_list" {
-  ref   = data.js_const.loader.id
-  value = "classList"
-}
-
-data "js_function_call" "modal_image_loader_class_list_add" {
-  caller   = data.js_index.modal_image_loader_class_list.id
-  function = "add"
-  args     = ["hidden"]
+  args     = []
 }
 
 data "js_return" "modal_image" {
