@@ -59,7 +59,7 @@ data "html_style" "main" {
     }
 
     .loader.light {
-      border-color: dimgray;
+      border-color: black;
       border-bottom-color: transparent;
     }
 
