@@ -8,9 +8,13 @@ resource "aws_lambda_function" "api_get_images" {
   publish          = true
 }
 
+module "get_images_js" {
+  source = "../backend/get_images"
+}
+
 data "archive_file" "api_get_images_js" {
   type                    = "zip"
   output_path             = "${path.module}/dist/api-get-images.zip"
   source_content_filename = "api-get-images.mjs"
-  source_content          = var.api_get_images_js_content
+  source_content          = module.get_images_js.content
 }

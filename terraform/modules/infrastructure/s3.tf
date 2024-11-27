@@ -24,15 +24,24 @@ data "aws_iam_policy_document" "s3_bucket_frontend_policy" {
   }
 }
 
+module "index_html" {
+  source = "../frontend/index_html"
+}
+
 resource "aws_s3_object" "frontend_index" {
   bucket       = module.s3_bucket_frontend.this.id
   key          = "index.html"
-  content      = var.index_html_content
+  content      = module.index_html.content
   content_type = "text/html"
+}
+
+module "script_js" {
+  source       = "../frontend/script_js"
+  api_base_url = aws_apigatewayv2_stage.v1.invoke_url
 }
 
 resource "aws_s3_object" "frontend_script" {
   bucket  = module.s3_bucket_frontend.this.id
   key     = "script.js"
-  content = var.script_js_content
+  content = module.script_js.content
 }
