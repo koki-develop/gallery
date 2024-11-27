@@ -4,6 +4,7 @@ data "html_head" "main" {
     data.html_meta.viewport.html,
     data.html_title.main.html,
     data.html_script.tailwind.html,
+    data.html_link.font.html,
     data.html_style.main.html,
   ]
 }
@@ -24,6 +25,11 @@ data "html_title" "main" {
 data "html_script" "tailwind" {
   src      = "https://cdn.tailwindcss.com"
   children = []
+}
+
+data "html_link" "font" {
+  href = "https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap"
+  rel  = "stylesheet"
 }
 
 data "html_style" "main" {
