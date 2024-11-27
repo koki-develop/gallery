@@ -24,7 +24,7 @@ data "html_template" "modal_image" {
 }
 
 data "html_img" "modal_image" {
-  class = "max-h-[80dvh] max-w-[80dvw] object-contain"
+  class = "max-h-[80dvh] max-w-[80dvw] object-contain hidden"
   alt   = ""
 }
 
