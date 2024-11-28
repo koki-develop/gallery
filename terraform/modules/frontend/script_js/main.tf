@@ -1,5 +1,12 @@
 data "js_program" "main" {
   statements = [
+    data.js_function_call.main.statement,
+  ]
+}
+
+data "js_function" "main" {
+  async = true
+  body = [
     # variables
     data.js_const.app.statement,
     data.js_const.loader.statement,
@@ -15,14 +22,16 @@ data "js_program" "main" {
     module.function_build_image_list.this.statement,
     module.function_build_image_list_item.this.statement,
 
-    # main
-    data.js_function.main.statement,
-    data.js_function_call.main.statement,
+    data.js_function_call.modal_add_event_listener.statement,
+    data.js_const.images.statement,
+    data.js_function_call.loader_remove.statement,
+    data.js_const.image_list.statement,
+    data.js_function_call.app_append_child.statement,
   ]
 }
 
 data "js_function_call" "main" {
-  function = data.js_function.main.id
+  function = data.js_function.main.expression
 }
 
 data "js_const" "app" {
@@ -117,18 +126,6 @@ module "function_build_image_list_item" {
   const_modal_id                    = data.js_const.modal.id
   function_calc_thumb_size_id       = module.function_calc_thumb_size.this.id
   function_build_modal_image_id     = module.function_build_modal_image.this.id
-}
-
-data "js_function" "main" {
-  name  = "main"
-  async = true
-  body = [
-    data.js_function_call.modal_add_event_listener.statement,
-    data.js_const.images.statement,
-    data.js_function_call.loader_remove.statement,
-    data.js_const.image_list.statement,
-    data.js_function_call.app_append_child.statement,
-  ]
 }
 
 data "js_const" "images" {
