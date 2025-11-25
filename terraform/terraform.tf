@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.9.8"
+  required_version = "1.14.0"
 
   backend "s3" {
     bucket = "gallery-tfstates"
@@ -10,12 +10,12 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.75.0"
+      version = "6.22.1"
     }
 
     archive = {
       source  = "hashicorp/archive"
-      version = "2.6.0"
+      version = "2.7.1"
     }
   }
 }
